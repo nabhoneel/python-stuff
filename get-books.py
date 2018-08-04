@@ -61,6 +61,15 @@ for pageNumber in range(1, 11) :
   count = 0
 
   for link in links :
+    
+    extension = link.parent
+
+    count = 1
+    while count <= 12 :
+      extension = extension.nextSibling
+      count += 1
+    extension = extension.text
+    
     print('\n' + link.text)
 
     # Go to the page to which the link goes :P
@@ -73,5 +82,5 @@ for pageNumber in range(1, 11) :
     print(finalURL)
 
     # Save to folder 'books':
-    fileName = 'books/' + link.text.replace(':', '_') + '.pdf'
+    fileName = 'books/' + link.text.replace(':', '_') + '.' + extension
     urllib.request.urlretrieve(finalURL, fileName)
