@@ -82,5 +82,7 @@ for pageNumber in range(1, 11) :
     print(finalURL)
 
     # Save to folder 'books':
-    fileName = 'books/' + link.text.replace(':', '_') + '.' + extension
+    fileName = link.text.replace(':', '_')
+    fileName = fileName.replace('\"', '_')
+    fileName = 'books/' + fileName + '.' + extension
     urllib.request.urlretrieve(finalURL, fileName)
